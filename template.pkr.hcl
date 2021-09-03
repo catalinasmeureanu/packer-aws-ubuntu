@@ -9,7 +9,7 @@ packer {
 
 variable "region" {
   type    = string
-  default = "us-east-1"
+  default = "eu-central-1"
 }
 
 variable "ami_prefix" {
@@ -37,7 +37,7 @@ source "amazon-ebs" "ubuntu-focal" {
   ssh_username = "ubuntu"
   tag {
     key   = "Name"
-    value = "atanas"
+    value = "catalina vault"
   }
 }
 
@@ -53,7 +53,7 @@ build {
   }
 
   provisioner "shell" {
-    script       = "provision/consul.sh"
+    script       = "provision/vault.sh"
     pause_before = "10s"
     timeout      = "10s"
   }
